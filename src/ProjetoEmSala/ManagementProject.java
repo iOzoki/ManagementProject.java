@@ -1,5 +1,8 @@
 package ProjetoEmSala;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +29,7 @@ public class ManagementProject {
             System.out.println("5 - Search project by ID.");
             System.out.println("6 - Delete a project.");
             System.out.println("7 - Exit");
+            System.out.println("8 - salvar projeto em binario");
             System.out.print(">>> ");
             opcao = sc.nextInt();
             sc.nextLine();
@@ -108,6 +112,10 @@ public class ManagementProject {
                 case 7:
                     System.out.println("Exiting...");
                     break;
+                case 8:
+                    salvarProjetoEmBinario();
+                    break;
+
                 default:
                     System.out.println("Invalid option!");
                     break;
@@ -121,6 +129,17 @@ public class ManagementProject {
         Project newProject = new Project(id, name, description);
         projectList.put(id, newProject);
         id++;
+    }
+
+    public void salvarProjetoEmBinario() {
+        try (FileOutputStream fileOut = new FileOutputStream("projects.bin");
+             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+            out.writeObject(projectList);
+            System.out.println("Projetos salvos com sucesso em binário.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao salvar os projetos em binário.");
+        }
     }
 
     public void addTask(int projectId, String taskName, String taskDescription, Status status, String startDate, String endDate) {
@@ -246,6 +265,7 @@ public class ManagementProject {
         }
     }
 }
+
 
 
 
