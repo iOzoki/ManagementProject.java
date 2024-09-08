@@ -22,34 +22,18 @@ public class Project implements Serializable {
         taskList.add(task);
     }
 
-    public void addTask(int taskID, String taskName, String taskDescription, String taskStatus, String startDate, String endDate) {
-        taskList.add(new Task(taskID, taskName, taskDescription, taskStatus, startDate, endDate));
-    }
 
-    // Getters e Setters
     public int getID() {
         return ID;
-    }
-    public void setID(int ID) {
-        this.ID = ID;
     }
     public String getName() {
         return Name;
     }
-    public void setName(String Name) {
-        this.Name = Name;
-    }
     public String getDescription() {
         return Description;
     }
-    public void setDescription(String Description) {
-        this.Description = Description;
-    }
     public List<Task> getTaskList() {
         return taskList;
-    }
-    public void setTaskList(List<Task> taskList) {
-        this.taskList = taskList;
     }
 }
 

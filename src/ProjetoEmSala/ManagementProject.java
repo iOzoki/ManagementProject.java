@@ -15,11 +15,18 @@ public class ManagementProject {
     ManagementProject() {
         projectList = new HashMap<Integer, Project>();
     }
-
+//--------------------------------------------------------------------------------
+//Para criar a interface
     public Map<Integer, Project> getProjectList() {
         return projectList;
     }
-
+    public int getCurrentProjectId() {
+        return id;
+    }
+    public int getCurrentTaskId() {
+        return taskID;
+    }
+//--------------------------------------------------------------------------------
     public void menu() {
         Scanner sc = new Scanner(System.in);
         int opcao;
@@ -154,7 +161,6 @@ public class ManagementProject {
             String taskStatus = status.toString();
 
             Task newTask = new Task(taskID, taskName, taskDescription, taskStatus, startDate, endDate);
-
             project.addTask(newTask);
 
             taskID++;

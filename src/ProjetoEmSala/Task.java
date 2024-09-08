@@ -3,7 +3,7 @@ package ProjetoEmSala;
 import java.io.Serializable;
 
 public class Task implements Serializable {
-    private static final long serialVersionUID = 1L; // Identificador de versão para serialização
+    private static final long serialVersionUID = 1L;
 
     private int taskID;
     private String taskName;
@@ -21,51 +21,24 @@ public class Task implements Serializable {
         this.endDate = endDate;
     }
 
-    // Getters e Setters
     public int getTaskID() {
         return taskID;
     }
-
-    public void setTaskID(int taskID) {
-        this.taskID = taskID;
-    }
-
     public String getTaskName() {
         return taskName;
     }
-
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
-    }
-
     public String getTaskDescription() {
         return taskDescription;
     }
-
-    public void setTaskDescription(String taskDescription) {
-        this.taskDescription = taskDescription;
-    }
-
     public String getStartDate() {
         return startDate;
     }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
     public String getEndDate() {
         return endDate;
     }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
-
     public String getTaskStatus() {
         return taskStatus;
     }
-
     public void setTaskStatus(String taskStatus) {
         this.taskStatus = taskStatus;
     }

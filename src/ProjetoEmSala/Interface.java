@@ -69,14 +69,14 @@ public class Interface extends JFrame {
 
             if (projectName != null && projectDescription != null) {
                 managementProject.createProject(projectName, projectDescription);
-                JOptionPane.showMessageDialog(this, "Project created successfully!");
+                int projectId = managementProject.getCurrentProjectId() - 1;
+                JOptionPane.showMessageDialog(null, "Project created successfully with ID: " + projectId);
             } else {
                 JOptionPane.showMessageDialog(this, "Project creation canceled.");
             }
         });
         buttonTwo.addActionListener(e -> {
             try {
-
                 String projectIdInput = JOptionPane.showInputDialog(this, "Enter the project ID:");
 
                 if (projectIdInput == null || projectIdInput.isEmpty()) {
@@ -140,7 +140,9 @@ public class Interface extends JFrame {
                 }
 
                 managementProject.addTask(projectId, taskName, taskDescription, status, startDate, endDate);
-                JOptionPane.showMessageDialog(this, "Task added successfully!");
+
+                int taskId = managementProject.getCurrentTaskId() - 1;
+                JOptionPane.showMessageDialog(this, "Task added successfully with ID: " + taskId);
 
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Invalid project ID format! Please enter a valid number.");
@@ -303,7 +305,7 @@ public class Interface extends JFrame {
             System.exit(0);
         });
         buttonEight.addActionListener(e -> {
-
+            managementProject.saveProjectInBin();
         });
 
         add(northPanel, BorderLayout.NORTH);
