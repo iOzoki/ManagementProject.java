@@ -17,6 +17,10 @@ public class ManagementProject {
         projectList = new HashMap<Integer, Project>();
     }
 
+    public Map<Integer, Project> getProjectList() {
+        return projectList;
+    }
+
     public void menu() {
         Scanner sc = new Scanner(System.in);
         int opcao;
@@ -29,7 +33,7 @@ public class ManagementProject {
             System.out.println("5 - Search project by ID.");
             System.out.println("6 - Delete a project.");
             System.out.println("7 - Exit");
-            System.out.println("8 - salvar projeto em binario");
+            System.out.println("8 - Save project in bin");
             System.out.print(">>> ");
             opcao = sc.nextInt();
             sc.nextLine();
@@ -99,15 +103,17 @@ public class ManagementProject {
                     int idProcurado = sc.nextInt();
                     sc.nextLine();
                     Project projeto = searchProjectByID(idProcurado);
-                    if(projeto != null) {
+                    if (projeto != null) {
                         System.out.println("Project found: " + projeto.getName());
-                    }
-                    else {
+                    } else {
                         System.out.println("Project not found.");
                     }
                     break;
                 case 6:
-                    deleteProject();
+                    System.out.println("Type the ID of the project you want to delete: ");
+                    int projectIdToDelete = sc.nextInt();
+                    sc.nextLine();
+                    deleteProject(projectIdToDelete);
                     break;
                 case 7:
                     System.out.println("Exiting...");
@@ -135,10 +141,10 @@ public class ManagementProject {
         try (FileOutputStream fileOut = new FileOutputStream("projects.bin");
              ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(projectList);
-            System.out.println("Projetos salvos com sucesso em binário.");
+            System.out.println("Projects successfully saved in binary.");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Erro ao salvar os projetos em binário.");
+            System.out.println("Error when saving projects in binary.");
         }
     }
 
@@ -249,13 +255,7 @@ public class ManagementProject {
         return projectList.get(idProcurado);
     }
 
-    public void deleteProject() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Type the ID of the project you want to delete: ");
-        int projectId = sc.nextInt();
-        sc.nextLine();
-
+    public void deleteProject(int projectId) {
         Project removedProject = projectList.remove(projectId);
 
         if (removedProject != null) {
@@ -265,7 +265,6 @@ public class ManagementProject {
         }
     }
 }
-
 
 
 
