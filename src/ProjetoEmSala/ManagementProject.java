@@ -4,7 +4,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -119,7 +118,7 @@ public class ManagementProject {
                     System.out.println("Exiting...");
                     break;
                 case 8:
-                    salvarProjetoEmBinario();
+                    saveProjectInBin();
                     break;
 
                 default:
@@ -137,7 +136,7 @@ public class ManagementProject {
         id++;
     }
 
-    public void salvarProjetoEmBinario() {
+    public void saveProjectInBin() {
         try (FileOutputStream fileOut = new FileOutputStream("projects.bin");
              ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(projectList);

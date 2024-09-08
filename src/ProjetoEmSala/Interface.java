@@ -300,7 +300,7 @@ public class Interface extends JFrame {
             }
         });
         buttonSeven.addActionListener(e -> {
-
+            System.exit(0);
         });
         buttonEight.addActionListener(e -> {
 
